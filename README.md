@@ -72,3 +72,99 @@ iA Groupe financier n'est pas affilié à ce travail.
 -------------------------------------------------------------------------------------------------------
 
 2. PROJET DE LA GESTION/CRÉATION DE BASE DE DONNÉES POUR UNE COMPAGNIE DE LOCATION D'AUTO AVEC RAPPORT
+
+ # Projet de Base de Données — Agence de Location de Véhicules
+
+Conception et implémentation d'un système de gestion complet pour une agence de location de véhicules au Québec, incluant la gestion des réservations, des clients, de la flotte et des contrats.
+
+---
+
+## Contenu du projet
+
+1. **Reformulation du projet** — description détaillée et réaliste du système
+2. **Modèle entité-association (MEA)** — diagramme entité-relation couvrant toutes les entités et leurs associations
+3. **Modèle relationnel** — schéma relationnel dérivé du MEA, implémenté en MySQL
+4. **Création des tables SQL** — script DDL complet
+5. **Données de test** — 50 à 100 tuples réalistes via procédures stockées
+6. **Requêtes SQL** — une dizaine de requêtes dont 5 impliquant au moins 4 relations
+7. **Déclencheur, fonction et procédure** — au moins un de chaque, testé
+8. **Application fonctionnelle** — mini-application englobant plus de dix instructions SQL
+
+---
+
+## Structure de la base de données
+
+### Entités principales
+
+| Table | Description |
+|---|---|
+| `agence` | 8 agences réparties au Québec |
+| `client` | 20 clients avec permis de conduire |
+| `vehicule` | 25 véhicules de types variés |
+| `reservation` | 30 réservations (confirmées, annulées, en attente) |
+| `contrat` | 28 contrats liés aux réservations actives |
+| `option_location` | 8 options disponibles à la location |
+| `reservation_option` | Table d'association réservation ↔ options |
+| `incident` | 12 incidents survenus en location |
+| `maintenance` | 20 entrées de maintenance de la flotte |
+
+### Types de véhicules disponibles
+
+Berline, VUS, Économique, Camionnette, Fourgonnette, Luxe, Électrique.
+
+### Options de location
+
+GPS, siège bébé, conducteur additionnel, protection collision, assistance routière, Wi-Fi embarqué, porte-ski, réservoir prépayé.
+
+---
+
+## Technologies utilisées
+
+- **SGBD :** MySQL
+- **Langage :** SQL (DDL + DML + procédures/fonctions/déclencheurs)
+
+---
+
+## Installation et utilisation
+
+### Prérequis
+
+- MySQL 8.0 ou supérieur
+- Un client MySQL (MySQL Workbench, DBeaver, ligne de commande, etc.)
+
+### Étapes
+
+```bash
+# 1. Créer la base de données
+mysql -u root -p -e "CREATE DATABASE location_vehicules CHARACTER SET utf8mb4;"
+
+# 2. Créer les tables (script DDL)
+mysql -u root -p location_vehicules < schema.sql
+
+# 3. Injecter les données de test
+mysql -u root -p location_vehicules < seed_data.sql
+
+# 4. Exécuter les requêtes
+mysql -u root -p location_vehicules < requetes.sql
+```
+
+---
+
+## Agences couvertes
+
+| # | Nom | Ville |
+|---|---|---|
+| 1 | AutoLocation Montréal Centre | Montréal |
+| 2 | AutoLocation Montréal Aéroport | Montréal |
+| 3 | AutoLocation Québec City | Québec |
+| 4 | AutoLocation Laval | Laval |
+| 5 | AutoLocation Sherbrooke | Sherbrooke |
+| 6 | AutoLocation Trois-Rivières | Trois-Rivières |
+| 7 | AutoLocation Gatineau | Gatineau |
+| 8 | AutoLocation Longueuil | Longueuil |
+
+---
+
+## Auteur : Muhammed Faye
+
+Projet académique — Base de données relationnelles
