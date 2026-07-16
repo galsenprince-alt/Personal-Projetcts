@@ -167,4 +167,4 @@ mysql -u root -p location_vehicules < requetes.sql
 
 ## Auteur : Muhammed Faye
 
-Projet académique — Base de données relationnelles
+
